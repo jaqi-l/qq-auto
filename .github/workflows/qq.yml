@@ -1,0 +1,46 @@
+# QQ 每日自动任务 - GitHub Actions 工作流
+# 每天北京时间 07:00 自动执行（UTC 23:00）
+# 支持手动触发
+ 
+name: QQ Daily Task
+ 
+on:
+  schedule:
+    # UTC 23:00 = 北京时间 07:00
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: '强制执行'
+        required: false
+        default: 'true'
+ 
+jobs:
+  qq-daily:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+ 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+ 
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+ 
+      - name: Run QQ Daily Task
+        env:
+          QQ_COOKIE: ${{ secrets.QQ_COOKIE }}
+          ENABLE_QQ_MUSIC: ${{ secrets.ENABLE_QQ_MUSIC }}
+          ENABLE_QQ_GAME: ${{ secrets.ENABLE_QQ_GAME }}
+          PUSH_KEY: ${{ secrets.PUSH_KEY }}
+          PUSH_TYPE: ${{ secrets.PUSH_TYPE }}
+        run: python qq_auto.py
+ 
+      - name: Cleanup
+        if: always()
+        run: echo "Task completed at $(date)"
