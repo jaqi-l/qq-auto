@@ -19,7 +19,7 @@ from urllib.parse import quote
 # ============================================================
 
 # QQ Cookie（从浏览器获取，必需）
-QQ_COOKIE = os.environ.get('QQ_COOKIE', 'RK=pMDq/p6ARQ; ptcz=3290f2e1e5aff15a4cc873650299d46ff20427b75834bba1ed00d42560cbd8c3; _clck=tzpjal|1|g7j|0; pgv_info=ssid=s1559662090; pgv_pvid=1045185503; uin=o0547152849; skey=@muphZy6Al; p_uin=o0547152849; pt4_token=Mz8kSfQ-G8eFDtDUsgXtVLO7FT3Mlhj1wT82NO0IwYo_; p_skey=dUcE6*dSrkq*cXUk1y3WRycq0AHh2WnOXj8I*i*n5Kw_; Loading=Yes; media_p_uin=547152849; qqmusic_uin=; qqmusic_key=; qqmusic_fromtag=; __Q_w_s_hat_seed=1; qzmusicplayer=qzone_player_547152849_1783491177804; v6uin=547152849|qzone_player; media_p_skey=8JgqobheYugbKRq77LBN85zoZN0tT20J-RhPuQ3XSrstZvH8khg6uO0yVnOGpazZf6TPv6CpqnEaCupjy0ogvQ')
+QQ_COOKIE = os.environ.get('QQ_COOKIE', '')
 
 # 推送通知（可选）
 PUSH_KEY = os.environ.get('PUSH_KEY', '')
