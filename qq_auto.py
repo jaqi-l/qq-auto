@@ -201,7 +201,8 @@ class QQClient:
             # 解析页面中的 __INITIAL_STATE__ 数据
             match = re.search(r'window\.__INITIAL_STATE__\s*=\s*(.*?)\s*;', text)
             if not match:
-                log('❌ 获取等级信息失败：无法解析页面数据'，text)
+                log('❌ 获取等级信息失败：无法解析页面数据')
+                log(f'👤 昵称: {text}')
                 return None
 
             data = json.loads(match.group(1))
